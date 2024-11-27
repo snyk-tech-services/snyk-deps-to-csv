@@ -110,8 +110,9 @@ async function processQueue(queue: any[], ) {
             for (const dep of totalDeps) {
                 //debug(`dep: ${JSON.stringify(dep)}`)
                 for (const project of dep.projects) {
-                    let projectUrl = `https://app.snyk.io/org/${url.orgSlug}/project/${project.id}` 
-                    writeToCSV(`${url.orgSlug},${url.orgId},${dep.id?.replace(',',';')},${dep.name},${dep.version?.replace(',',';')},${dep.latestVersion},${dep.latestVersionPublishedDate},${dep.firstPublishedDate},${dep.isDeprecated},${project.name},${project.id},${projectUrl}`)
+                    let projectUrl = `https://app.snyk.io/org/${url.orgSlug}/project/${project.id}`
+                    const license = dep.licenses?.[0]?.license || "Unknown"
+                    writeToCSV(`${url.orgSlug},${url.orgId},${dep.id?.replace(',',';')},${dep.name},${dep.version?.replace(',',';')},${dep.latestVersion},${dep.latestVersionPublishedDate},${dep.firstPublishedDate},${dep.isDeprecated},${project.name},${project.id},${projectUrl}, ${license}`)
                 }
                 
             }
