@@ -201,7 +201,7 @@ async function app() {
       console.log(`filtering dependencies for ${JSON.stringify(String(dependencyList).split(','), null, 2)}\n`)
 
     }
-    writeToCSV(`org-slug,org-id,dep-id,dep-name,dep-version,latest-version,latest-version-published-date,first-published-date,is-deprecated,project-name,project-id,project-url`)
+    writeToCSV(`org-slug,org-id,dep-id,dep-name,dep-version,latest-version,latest-version-published-date,first-published-date,is-deprecated,project-name,project-id,project-url,license`)
     let queue = [];
     // get all the orgs for the snyk group
     const orgs = await getSnykOrgs();
